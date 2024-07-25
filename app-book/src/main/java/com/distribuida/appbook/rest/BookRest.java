@@ -15,15 +15,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/books")
 public class BookRest {
 
-<<<<<<< HEAD
-    //@Autowired
     private final BookRepo br;
-
-   // @Autowired
-=======
-    private final BookRepo br;
-
->>>>>>> main
     private final AuthorRestClient authorRestClient;
 
     public BookRest(BookRepo br, AuthorRestClient authorRestClient) {
