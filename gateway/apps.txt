@@ -1,0 +1,5 @@
+
+
+---levantar apps
+
+java "-Dserver.port=8090" -jar build/libs/app-book-0.0.1-SNAPSHOT.jar

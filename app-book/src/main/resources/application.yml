@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: app-book
+  r2dbc:
+    url: r2dbc:postgresql://dpg-conqv5cf7o1s73fq6j00-a.oregon-postgres.render.com:5432/dbexample_gq48?ssl=true
+    username: dbexample_gq48_user
+    password: FhdlH7tFLjTRZjdNjdq88edeMYqsEaI8
+    pool:
+      enabled: true
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${random.uuid}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        register: true
+       # deregister: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081  # Asumiendo que Spring Boot Admin corre en este puerto
+
+server:
+  port: 8090  # Mantenemos el puerto fijo que tenías antes
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # Expone todos los endpoints de Actuator
+  endpoint:
+    health:
+      show-details: always

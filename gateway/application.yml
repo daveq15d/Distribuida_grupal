@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: gateway
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+  cloud:
+    gateway:
+      routes:
+        - id: app-books
+          uri: lb://app-book
+          predicates:
+            - Path=/app-book/**
+          filters:
+            - StripPrefix=1
+        - id: app-authors
+          uri: lb://app-authors
+          predicates:
+            - Path=/app-authors/**
+          filters:
+            - StripPrefix=1
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        register: true
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${random.value}
+        service-name: ${spring.application.name}
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,gateway,info
+  endpoint:
+    gateway:
+      enabled: true
