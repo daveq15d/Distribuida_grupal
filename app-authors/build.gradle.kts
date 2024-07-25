@@ -27,38 +27,51 @@ extra["springCloudVersion"] = "2023.0.0"
 
 dependencies {
 
+    // Lombok
     compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // Spring Boot DevTools para desarrollo
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-    // PostgreSQL
+    // PostgreSQL JDBC Driver (puede ser opcional si solo usas R2DBC)
     runtimeOnly("org.postgresql:postgresql")
-    annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+    // Spring Data R2DBC para base de datos reactiva
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE")
 
-    //----------------------------
-    // Spring Boot Starter (reemplaza quarkus-arc y proporciona el contenedor IoC)
-    implementation ("org.springframework.boot:spring-boot-starter")
-
-    // REST API (reemplaza quarkus-resteasy-reactive)
-    // implementation ("org.springframework.boot:spring-boot-starter-web")
+    // Starter WebFlux para aplicaciones reactivas
     implementation("org.springframework.boot:spring-boot-starter-webflux")
 
-    // JSON (reemplaza quarkus-resteasy-reactive-jackson)
-    implementation ("org.springframework.boot:spring-boot-starter-json")
+    // JSON soporte
+    implementation("org.springframework.boot:spring-boot-starter-json")
 
-    // JPA (reemplaza quarkus-hibernate-orm-panache)
-    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    // Actuator para health checks
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    // Service Discovery con Consul
-    //implementation ("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+    // Spring Cloud Gateway para el gateway
+    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
 
-    // Actuator para health checks (reemplaza quarkus-smallrye-health)
-    implementation ("org.springframework.boot:spring-boot-starter-actuator")
 
-    //Spring Cloud Gateway
-    implementation ("org.springframework.cloud:spring-cloud-starter-gateway")
+    // Spring Cloud OpenFeign para clientes REST declarativos
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+    // JasperReports para reportes
+    implementation("net.sf.jasperreports:jasperreports:7.0.0")
+
+    // Consul
+    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.0.5")
+
+    //Spring Boot Admin Server y Client
+    implementation("de.codecentric:spring-boot-admin-starter-client:3.0.0")
+    implementation("de.codecentric:spring-boot-admin-starter-server:3.0.0")
+
+
+    // Dependencias de test
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 dependencyManagement {
