@@ -1,5 +1,28 @@
+-- 1 levantar consul
+ consul agent -dev
+---url del dashboard de consul
+http://localhost:8500
 
 
 ---levantar apps
 
+--------------admin-server -------------
+java "-Dserver.port=8081" -jar build/libs/admin-server-0.0.1-SNAPSHOT.jar
+
+--------------app-book -------------
 java "-Dserver.port=8090" -jar build/libs/app-book-0.0.1-SNAPSHOT.jar
+
+--------------app-authors -------------
+java "-Dserver.port=9090" -jar build/libs/app-authors-0.0.1-SNAPSHOT.jar
+
+--------------app-gateway -------------
+java "-Dserver.port=8080" -jar build/libs/app-gateway-0.0.1-SNAPSHOT.jar
+
+---url del admin server
+http://localhost:8081
+
+-- url para probar aps
+http://localhost:8080/app-book/books
+
+http://localhost:8080/app-authors/authors/1
+
