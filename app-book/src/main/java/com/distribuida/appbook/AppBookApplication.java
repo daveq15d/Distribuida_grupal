@@ -9,7 +9,6 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 
 @SpringBootApplication
 @EnableWebFlux
-//@EnableAdminServer
 public class AppBookApplication {
 
     public static void main(String[] args) {

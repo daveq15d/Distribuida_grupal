@@ -26,7 +26,7 @@ spring:
         url: http://localhost:8081  # Asumiendo que Spring Boot Admin corre en este puerto
 
 server:
-  port: 8090  # Mantenemos el puerto fijo que tenías antes
+  port: 8090
 
 management:
   endpoints:

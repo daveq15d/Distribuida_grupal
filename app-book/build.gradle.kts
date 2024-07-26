@@ -52,9 +52,6 @@ dependencies {
     // Spring Cloud Gateway para el gateway
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
 
-    // JasperReports para reportes
-    implementation("net.sf.jasperreports:jasperreports:7.0.0")
-
     // Consul
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
     implementation("com.github.ben-manes.caffeine:caffeine:3.0.5")
