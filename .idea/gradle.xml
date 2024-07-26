@@ -4,6 +4,18 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/admin-server" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/admin-server" />
+            <option value="$PROJECT_DIR$/admin-server/admin-server" />
+            <option value="$PROJECT_DIR$/admin-server/app-authors" />
+            <option value="$PROJECT_DIR$/admin-server/app-book" />
+            <option value="$PROJECT_DIR$/admin-server/gateway" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/app-authors" />
         <option name="modules">
           <set>

@@ -17,7 +17,9 @@ spring:
         health-check-path: /actuator/health
         health-check-interval: 10s
         register: true
-       # deregister: true
+        tags:
+          - "gateway-route=app-authors"
+          - "context-path=/app-authors"
   boot:
     admin:
       client:

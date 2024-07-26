@@ -1,12 +1,12 @@
 spring:
   application:
     name: gateway
-  boot:
-    admin:
-      client:
-        url: http://localhost:8081
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
         - id: app-books
           uri: lb://app-book
@@ -29,6 +29,10 @@ spring:
         prefer-ip-address: true
         instance-id: ${spring.application.name}:${random.value}
         service-name: ${spring.application.name}
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
 
 server:
   port: 8080
@@ -37,7 +41,9 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,gateway,info
+        include: '*'
   endpoint:
+    health:
+      show-details: always
     gateway:
       enabled: true

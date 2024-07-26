@@ -52,10 +52,6 @@ dependencies {
     // Spring Cloud Gateway para el gateway
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
 
-
-    // Spring Cloud OpenFeign para clientes REST declarativos
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-
     // JasperReports para reportes
     implementation("net.sf.jasperreports:jasperreports:7.0.0")
 
@@ -64,8 +60,8 @@ dependencies {
     implementation("com.github.ben-manes.caffeine:caffeine:3.0.5")
 
     //Spring Boot Admin Server y Client
-    implementation("de.codecentric:spring-boot-admin-starter-client:3.0.0")
-    implementation("de.codecentric:spring-boot-admin-starter-server:3.0.0")
+    implementation("de.codecentric:spring-boot-admin-starter-client:3.2.1")
+    implementation("de.codecentric:spring-boot-admin-starter-server:3.2.1")
 
 
     // Dependencias de test

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-<<<<<<< HEAD
-=======
     <file type="web" url="file://$PROJECT_DIR$/admin-server" />
->>>>>>> main
     <file type="web" url="file://$PROJECT_DIR$/app-authors" />
     <file type="web" url="file://$PROJECT_DIR$/app-book" />
   </component>
