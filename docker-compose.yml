@@ -1,0 +1,68 @@
+version: '3.3'
+services:
+  consul:
+    image: consul:1.15.4
+    command: |
+      agent -dev
+      -ui
+      -bind=0.0.0.0
+      -client=0.0.0.0
+    ports:
+      - "8500:8500"
+    expose:
+      - 8500
+
+  admin-server:
+    image: dave15d/admin-server
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8081:8081"
+    depends_on:
+      - consul
+    deploy:
+      replicas: 1
+
+  app-gateway:
+    image: dave15d/app-gateway
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_CLOUD_CONSUL_HOST: consul
+      SPRING_CLOUD_CONSUL_PORT: 8500
+    ports:
+      - "8080:8080"
+    depends_on:
+      - consul
+      - app-book
+      - app-authors
+      - admin-server
+    deploy:
+      replicas: 1
+
+  app-authors:
+    image: dave15d/app-authors
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: r2dbc:postgresql://dpg-conqv5cf7o1s73fq6j00-a.oregon-postgres.render.com:5432/dbexample_gq48?ssl=true
+      SPRING_DATASOURCE_USERNAME: dbexample_gq48_user
+      SPRING_DATASOURCE_PASSWORD: FhdlH7tFLjTRZjdNjdq88edeMYqsEaI8
+      SPRING_CLOUD_CONSUL_HOST: consul
+      SPRING_CLOUD_CONSUL_PORT: 8500
+    depends_on:
+      - consul
+    deploy:
+      replicas: 1
+
+  app-book:
+    image: dave15d/app-book
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: r2dbc:postgresql://dpg-conqv5cf7o1s73fq6j00-a.oregon-postgres.render.com:5432/dbexample_gq48?ssl=true
+      SPRING_DATASOURCE_USERNAME: dbexample_gq48_user
+      SPRING_DATASOURCE_PASSWORD: FhdlH7tFLjTRZjdNjdq88edeMYqsEaI8
+      SPRING_CLOUD_CONSUL_HOST: consul
+      SPRING_CLOUD_CONSUL_PORT: 8500
+    depends_on:
+      - consul
+    deploy:
+      replicas: 1
